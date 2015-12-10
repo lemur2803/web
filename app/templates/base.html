@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="static/Images/icon.ico">
+        <link rel="stylesheet" href="static/CSS/common.css" type="text/css">
+        {% block head %}{% endblock %}
+        <!--[if lt IE 9]>
+		    <script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	    <![endif]-->
+        <script type="text/javascript" src="static/JS/common.js"></script>
+    </head>
+    <body>
+        <div id="login" style="display: none;">
+            <div>
+                <h2 style="text-align: center; margin-bottom: 10px;">Sign In</h2>
+                <form action="/signin" method="POST">
+                    <p class="field">
+                        <label for="signin_email">E-mail</label>
+                        <input type="email" name="signin_email" id="signin_email" ></p>
+                    <p class="field">
+                        <label for="signin_password">Password</label>
+                        <input type="password" name="signin_password" id="signin_password"></p>
+                    <p class="field">
+                        <input type="submit" value="Sign In"></p>
+                </form>
+                <hr style="margin: 10px 0px;">
+                <h2 style="text-align: center; margin-bottom: 10px;">Sign Up</h2>
+                <form action="/signup" method="POST">
+                    <p class="field">
+                        <label for="signup_nickname">Nickname</label>
+                        <input name="signup_nickname" id="signup_nickname" ></p>
+                    <p class="field">
+                        <label for="signup_email">E-mail</label>
+                        <input type="email" name="signup_email" id="signup_email" ></p>
+                    <p class="field">
+                        <label for="signup_password">Password</label>
+                        <input type="password" name="signup_password" id="signup_password"></p>
+                    <p class="field">
+                        <label for="signup_password_2">Confirm</label>
+                        <input type="password" name="signup_password_2" id="signup_password_2"></p>
+                    <p class="field">
+                        <input type="submit" value="Sign Up"></p>
+                </form>
+                <hr style="margin: 10px 0px;">
+                <input type="submit" onclick="loginClose()" value="Close">
+            </div>
+        </div>
+        {% block layers %}{% endblock %}
+        <div id="center_div_border">
+            <div id="center_div">
+                <div id="header">
+                    <div id="label" onclick="upOrDown()">
+                        <div id="label_pic">
+                            <img src="static/Images/label.png" style="width: 100%" alt="label.png">
+                        </div>
+                        <div id="label_name">
+                            <b>Chi'Zha</b>
+                        </div>
+                    </div>
+                    <div id="navi">
+                        <ul>
+                            <li><a href="index">Home</a></li>
+                            <li><a href="about">About</a></li>
+                            <li><a href="gallery">Gallery</a></li>
+                            <li><p onclick="loginShow()">LogIn</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="empty"></div>
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
